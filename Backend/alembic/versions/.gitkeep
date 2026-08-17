@@ -1,0 +1,6 @@
+# Empty script directory for alembic migrations
+# Migrations will be generated here when you run:
+# alembic revision --autogenerate -m "Initial migration"
+
+# To apply migrations:
+# alembic upgrade head
