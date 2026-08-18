@@ -16,16 +16,36 @@
 </p>
 
 <p>
+  🚀 <strong>Live Demo & Production Deployment:</strong><br>
+  Frontend (Vercel): <a href="https://resqai-tau.vercel.app" target="_blank"><code>https://resqai-tau.vercel.app</code></a> •
+  Backend API / Docs (Render): <a href="https://resq-ai-1-co8y.onrender.com/docs" target="_blank"><code>https://resq-ai-1-co8y.onrender.com/docs</code></a>
+</p>
+
+<p>
   <a href="#-overview">Overview</a> •
+  <a href="#-live-platforms">Live Platforms</a> •
   <a href="#-key-features">Features</a> •
   <a href="#-system-architecture">Architecture</a> •
   <a href="#-ai-intelligence">AI Intelligence</a> •
-  <a href="#-installation">Installation</a> •
+  <a href="#-installation--local-development">Installation</a> •
   <a href="#-api-reference">API</a> •
   <a href="#-deployment">Deployment</a>
 </p>
 
 </div>
+
+---
+
+## 🌐 Live Platforms
+
+RESQ-AI is fully deployed in production using a decoupled architecture:
+
+| Component | Platform | Live Endpoint / URL |
+|---|---|---|
+| **Frontend Dashboard** | Vercel | [https://resqai-tau.vercel.app](https://resqai-tau.vercel.app) |
+| **Backend & WebSockets** | Render | [https://resq-ai-1-co8y.onrender.com](https://resq-ai-1-co8y.onrender.com) |
+| **API Documentation** | FastAPI Swagger UI | [https://resq-ai-1-co8y.onrender.com/docs](https://resq-ai-1-co8y.onrender.com/docs) |
+| **Database** | Supabase PostgreSQL | Connected via Pooler / Direct Connection |
 
 ---
 
@@ -239,12 +259,10 @@ Reports can be exported in:
 
 ## ⚡ 9. Real-Time WebSocket Communication
 
-The backend provides a WebSocket stream:
+The backend provides a live WebSocket stream:
 
 ```text
-/ws
-```
-
+wss://[resq-ai-1-co8y.onrender.com/ws](https://resq-ai-1-co8y.onrender.com/ws)
 This allows connected dashboards to receive real-time incident and dispatch updates without repeatedly refreshing the application.
 
 ---
@@ -362,55 +380,55 @@ The engine can identify potentially affected adjacent zones before an emergency 
 # 🏗️ System Architecture
 
 ```text
-                         ┌─────────────────────────────┐
-                         │   MULTI-SOURCE INGESTION    │
-                         └──────────────┬──────────────┘
-                                        │
-          ┌─────────────────────────────┼─────────────────────────────┐
-          │                             │                             │
-          ▼                             ▼                             ▼
- ┌─────────────────┐          ┌─────────────────┐           ┌─────────────────┐
- │ Emergency Calls │          │ Citizen SOS     │           │ External Data   │
- │ / Audio Streams │          │ Portal          │           │ Weather / GIS   │
- └────────┬────────┘          └────────┬────────┘           └────────┬────────┘
-          │                            │                             │
-          └────────────────────────────┼─────────────────────────────┘
-                                       │
-                                       ▼
-                         ┌───────────────────────────┐
-                         │     FASTAPI BACKEND       │
-                         │ Real-Time API + WebSocket │
-                         └─────────────┬─────────────┘
-                                       │
-                    ┌──────────────────┴──────────────────┐
-                    │                                     │
-                    ▼                                     ▼
-          ┌──────────────────┐                 ┌──────────────────────┐
-          │   PostgreSQL     │                 │ AI Intelligence      │
-          │                  │                 │ Engine               │
-          │ Incidents        │                 │                      │
-          │ Zones            │                 │ Priority Engine      │
-          │ Resources        │                 │ Summarizer           │
-          │ Units            │                 │ Predictive Risk      │
-          └──────────────────┘                 └───────────┬──────────┘
-                                                           │
-                                                           ▼
-                                             ┌────────────────────────┐
-                                             │ WebSocket Broadcast    │
-                                             │ Layer                  │
-                                             └────────────┬───────────┘
-                                                          │
-                                                          ▼
-                                             ┌────────────────────────┐
-                                             │    NEXT.JS FRONTEND    │
-                                             └────────────┬───────────┘
-                                                          │
-                          ┌───────────────────────────────┼────────────────────────────┐
-                          │                               │                            │
-                          ▼                               ▼                            ▼
-                 ┌─────────────────┐            ┌─────────────────┐          ┌─────────────────┐
-                 │ Command Center  │            │ GIS Map View   │          │ SitRep Export   │
-                 └─────────────────┘            └─────────────────┘          └─────────────────┘
+                       ┌─────────────────────────────┐
+                       │    MULTI-SOURCE INGESTION   │
+                       └──────────────┬──────────────┘
+                                      │
+         ┌─────────────────────────────┼─────────────────────────────┐
+         │                             │                             │
+         ▼                             ▼                             ▼
+┌─────────────────┐           ┌─────────────────┐           ┌─────────────────┐
+│ Emergency Calls │           │ Citizen SOS     │           │ External Data   │
+│ / Audio Streams │           │ Portal          │           │ Weather / GIS   │
+└────────┬────────┘           └────────┬────────┘           └────────┬────────┘
+         │                             │                             │
+         └────────────────────────────┼─────────────────────────────┘
+                                      │
+                                      ▼
+                       ┌───────────────────────────┐
+                       │     FASTAPI BACKEND       │
+                       │ Real-Time API + WebSocket │
+                       └─────────────┬─────────────┘
+                                     │
+                    ┌────────────────┴──────────────────┐
+                    │                                   │
+                    ▼                                   ▼
+         ┌──────────────────┐               ┌──────────────────────┐
+         │    PostgreSQL    │               │ AI Intelligence      │
+         │                  │               │ Engine               │
+         │ Incidents        │               │                      │
+         │ Zones            │               │ Priority Engine      │
+         │ Resources        │               │ Summarizer           │
+         │ Units            │               │ Predictive Risk      │
+         └──────────────────┘               └───────────┬──────────┘
+                                                        │
+                                                        ▼
+                                           ┌────────────────────────┐
+                                           │ WebSocket Broadcast    │
+                                           │ Layer                  │
+                                           └────────────┬───────────┘
+                                                        │
+                                                        ▼
+                                           ┌────────────────────────┐
+                                           │    NEXT.JS FRONTEND    │
+                                           └────────────┬───────────┘
+                                                        │
+                         ┌───────────────────────────────┼────────────────────────────┐
+                         │                               │                            │
+                         ▼                               ▼                            ▼
+                  ┌─────────────────┐             ┌─────────────────┐          ┌─────────────────┐
+                  │ Command Center  │             │ GIS Map View    │          │ SitRep Export   │
+                  └─────────────────┘             └─────────────────┘          └─────────────────┘
 ```
 
 ---
@@ -425,7 +443,7 @@ The engine can identify potentially affected adjacent zones before an emergency 
 | **TypeScript** | Type-safe development |
 | **Tailwind CSS** | UI styling |
 | **Web Speech API** | Browser speech-to-text |
-| **WebSocket** | Real-time communication |
+| **WebSocket** | Real-time communication (`wss://`) |
 
 ## Backend
 
@@ -433,10 +451,10 @@ The engine can identify potentially affected adjacent zones before an emergency 
 |---|---|
 | **Python 3.11+** | Backend language |
 | **FastAPI** | REST API and WebSocket backend |
-| **SQLAlchemy** | ORM |
+| **SQLAlchemy** | ORM (Async SQLAlchemy) |
 | **Alembic** | Database migrations |
 | **asyncio** | Asynchronous processing |
-| **PostgreSQL** | Database |
+| **PostgreSQL / Supabase** | Production Database |
 
 ## AI / Intelligence
 
@@ -516,7 +534,7 @@ RESQ-AI/
 
 ---
 
-# 💻 Installation
+# 💻 Installation & Local Development
 
 ## Prerequisites
 
@@ -524,7 +542,7 @@ Make sure the following are installed:
 
 - Python `3.11+`
 - Node.js `18+`
-- PostgreSQL `15+`
+- PostgreSQL `15+` (or Supabase account)
 - Git
 - npm
 
@@ -579,9 +597,7 @@ Create your local `.env` file from the example:
 cp .env.example .env
 ```
 
-> On Windows, you can also manually copy `.env.example` and rename it to `.env`.
-
-Add the required configuration values to `.env`.
+Add your database configuration values (e.g., PostgreSQL or Supabase connection string) to `.env`.
 
 ### 7. Run database migrations
 
@@ -635,7 +651,12 @@ Create your local environment file:
 cp .env.local.example .env.local
 ```
 
-Configure the backend API URL according to your local backend configuration.
+Set your local or production backend URLs:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_WS_URL=ws://localhost:8000/ws
+```
 
 ### 4. Start the development server
 
@@ -654,13 +675,6 @@ http://localhost:3000
 # 🔐 Environment Variables
 
 Environment files may contain sensitive credentials and **must not be committed to GitHub**.
-
-The repository uses example files:
-
-```text
-Backend/.env.example
-Frontend/.env.local.example
-```
 
 For local development:
 
@@ -685,7 +699,7 @@ Never expose:
 - Secret keys
 - Authentication credentials
 
-For production, configure secrets through the hosting platform's environment-variable settings.
+For production, configure secrets through Vercel and Render's respective environment-variable settings dashboards.
 
 ---
 
@@ -723,11 +737,11 @@ For production, configure secrets through the hosting platform's environment-var
 
 ---
 
-## ⚡ Real-Time Communication
+# ⚡ Real-Time Communication
 
 | Protocol | Endpoint | Description |
 |---|---|---|
-| `WebSocket` | `/ws` | Real-time incident and dispatch updates |
+| `WebSocket` | `/ws` (or `wss://resq-ai-1-co8y.onrender.com/ws`) | Real-time incident and dispatch updates |
 
 ---
 
@@ -781,87 +795,53 @@ docker-compose up --build
 
 ---
 
-# 🌐 Deployment
+# 🌐 Deployment & Live Hosting
 
 RESQ-AI is structured as a separate frontend and backend application.
 
-A recommended production architecture is:
-
 ```text
-                         RESQ-AI
-                            │
-             ┌──────────────┴──────────────┐
-             │                             │
-             ▼                             ▼
-        ┌──────────┐                 ┌──────────┐
-        │  Vercel  │                 │  Render  │
-        │ Frontend │                 │ Backend  │
-        └────┬─────┘                 └────┬─────┘
-             │                            │
-             ▼                            ▼
-         Next.js                       FastAPI
-                                          │
-                                          ▼
+                        RESQ-AI
+                           │
+             ┌─────────────┴─────────────┐
+             │                           │
+             ▼                           ▼
+        ┌──────────┐                ┌──────────┐
+        │  Vercel  │                │  Render  │
+        │ Frontend │                │ Backend  │
+        └────┬─────┘                └────┬─────┘
+             │                           │
+             ▼                           ▼
+          Next.js                     FastAPI
+                                         │
+                                         ▼
                                      PostgreSQL
 ```
 
-## Frontend Deployment
+## Frontend Deployment (Vercel)
 
-The Next.js frontend can be deployed using **Vercel**.
+The Next.js frontend is deployed on **Vercel** (`https://resqai-tau.vercel.app`).
 
-Set the project root directory to:
-
-```text
-Frontend
-```
-
-Build command:
-
-```bash
-npm run build
-```
-
-Start command for platforms that require one:
-
-```bash
-npm start
-```
-
-Configure the frontend environment variables in the hosting platform.
+- **Root Directory:** `Frontend`
+- **Build Command:** `npm run build`
+- **Output:** Next.js static/serverless deployment
+- **Environment Variables configured in Vercel:**
+  - `NEXT_PUBLIC_API_URL` = `https://resq-ai-1-co8y.onrender.com`
+  - `NEXT_PUBLIC_WS_URL` = `wss://resq-ai-1-co8y.onrender.com/ws`
 
 ---
 
-## Backend Deployment
+## Backend Deployment (Render)
 
-The FastAPI backend can be deployed as a Python web service.
+The FastAPI backend is deployed as a Python web service on **Render** (`https://resq-ai-1-co8y.onrender.com`).
 
-Set the root directory to:
-
-```text
-Backend
-```
-
-Build command:
-
-```bash
-pip install -r requirements.txt
-```
-
-Start command:
-
-```bash
-uvicorn app.main:app --host 0.0.0.0 --port $PORT
-```
-
-After deployment, use the backend's public URL in the frontend environment configuration.
-
-For example:
-
-```text
-https://your-backend-url.example.com
-```
-
-> The exact environment-variable name for the frontend API URL should match the variable used by `Frontend/src/lib/api.ts`.
+- **Root Directory:** `Backend`
+- **Runtime:** Python 3.11.9
+- **Build Command:** `pip install -r requirements.txt`
+- **Start Command:** `uvicorn app.main:app --host 0.0.0.0 --port 10000`
+- **Environment Variables configured in Render:**
+  - `DATABASE_URL` = `postgresql+asyncpg://postgres.iyrlgztawgqquhjydqln:RESQ-Ai%40%401234567890@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres`
+  - `SECRET_KEY` = `66bba630c70a1040b136928a9ce16bdad290bd1b37cfb627aa5b58eb33ee3c9e`
+  - `DEBUG` = `false`
 
 ---
 
@@ -879,7 +859,7 @@ PostgreSQL     AI Engines
     │           │
     └─────┬─────┘
           ▼
-     WebSocket
+     WebSocket (wss://)
           │
           ▼
     Next.js Dashboard
@@ -900,7 +880,7 @@ RESQ-AI should be deployed with appropriate security controls.
 - Never commit `.env` files.
 - Never expose API keys in frontend code.
 - Use environment variables for production secrets.
-- Use HTTPS in production.
+- Use HTTPS and WSS in production.
 - Configure CORS correctly.
 - Protect database credentials.
 - Restrict database access where possible.
@@ -982,11 +962,9 @@ Then create a Pull Request on GitHub.
 
 This project is currently intended as a project/demo platform.
 
-Add an appropriate open-source license to the repository if the project is intended for public reuse or distribution.
-
 ---
 
-<div align="center">
+
 
 # 🚨 RESQ-AI
 
@@ -996,6 +974,8 @@ Add an appropriate open-source license to the repository if the project is inten
 
 ---
 
+🌐 **Live App:** https://resqai-tau.vercel.app • 📡 **API Docs:** https://resq-ai-1-co8y.onrender.com/docs
+
 Built with ❤️ using **FastAPI • Next.js • TypeScript • Python • PostgreSQL • AI**
 
-</div>
+
