@@ -1,55 +1,492 @@
-# RESQ-AI - Disaster Response Intelligence Platform
+<div align="center">
 
-A real-time disaster response command center with AI-powered analytics, built for hackathon demonstration.
+# 🚨 RESQ-AI
 
-## 🚀 Features
+### AI-Powered Disaster Intelligence & Autonomous Rescue Coordination Platform
 
-### Backend (FastAPI + SQLAlchemy + PostgreSQL)
-- **REST API** with endpoints for incidents, zones, resources, predictions
-- **WebSocket** real-time updates for live dashboard
-- **Background Simulation** generating mock SOS reports every 5 seconds
-- **AI Engines**:
-  - **Rescue Priority Engine** - Calculates priority (High/Medium/Low) based on keywords, severity, volume
-  - **Multilingual Summarizer** - Translates regional languages to English, generates tactical reports
-  - **Predictive Risk Engine** - Analyzes weather/historical data for future risk zones
+**From scattered disaster information to prioritized rescue decisions in seconds.**
 
-### Frontend (Next.js 14 + TypeScript + Tailwind CSS)
-- **Glassmorphism Design System** - Deep dark ambient, frosted glass panels, neon accents
-- **Command Dashboard** - Real-time command center with stats, incidents, resources, zones, predictions
-- **GIS Live Dashboard** - Interactive map with incident markers, resource tracking, heatmap view
-- **Citizen SOS Portal** - Voice-to-text using Web Speech API, multilingual support, offline/SMS fallback
-- **Predictive Risk Panel** - Charts for risk timeline, distribution, weather correlation, historical patterns
-- **AI Situation Summary** - Generate formal SitRep reports with export (Markdown/JSON)
-- **Resource Allocation** - Track and deploy resources with map visualization
-- **Active Zones Monitor** - Risk heatmap, zone details, weather conditions
-- **Incident Feed** - Searchable, filterable incident list with detail modals
+<p>
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/>
+  <img src="https://img.shields.io/badge/Next.js%2014-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/>
+  <img src="https://img.shields.io/badge/Python%203.11+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS"/>
+</p>
 
-## 🏗️ Project Structure
+<p>
+  <a href="#-overview">Overview</a> •
+  <a href="#-key-features">Features</a> •
+  <a href="#-system-architecture">Architecture</a> •
+  <a href="#-ai-intelligence">AI Intelligence</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-api-reference">API</a> •
+  <a href="#-deployment">Deployment</a>
+</p>
 
+</div>
+
+---
+
+## 📌 Overview
+
+During critical natural disasters, emergency response systems often face **information fragmentation**, delayed decision-making, and disconnected communication channels.
+
+Emergency calls, citizen distress reports, environmental data, satellite information, and social media signals can arrive from multiple sources without a unified intelligence layer.
+
+**RESQ-AI** is designed to bridge this operational gap.
+
+It combines:
+
+- 🤖 Artificial Intelligence
+- 🚨 Emergency incident prioritization
+- 🗺️ Geospatial intelligence
+- 🌐 Multilingual communication
+- 📊 Predictive risk analysis
+- ⚡ Real-time WebSocket communication
+- 🚑 Rescue resource coordination
+- 📡 Citizen SOS reporting
+
+The platform transforms incoming disaster information into **prioritized, actionable rescue intelligence**.
+
+---
+
+# 🎯 Problem Statement
+
+Traditional disaster response can struggle with:
+
+- Fragmented emergency information
+- Manual incident prioritization
+- Delayed emergency response
+- Lack of real-time situational awareness
+- Language barriers
+- Difficulty tracking rescue resources
+- Limited predictive analysis
+- Information overload for emergency operators
+
+RESQ-AI addresses these challenges through a unified AI-powered disaster intelligence platform.
+
+---
+
+# 💡 Our Solution
+
+RESQ-AI provides a centralized command platform where disaster-related information can be:
+
+1. **Collected**
+2. **Analyzed**
+3. **Prioritized**
+4. **Summarized**
+5. **Mapped**
+6. **Predicted**
+7. **Dispatched**
+8. **Monitored in real time**
+
+This allows emergency teams to focus on **what requires immediate attention** rather than manually processing large amounts of scattered information.
+
+---
+
+# ⚡ Key Differentiators
+
+| Capability | Traditional Approach | RESQ-AI |
+|---|---|---|
+| **Data Ingestion** | Fragmented reports | Unified multi-source ingestion |
+| **Incident Triage** | Manual review | AI-assisted priority scoring |
+| **Response Speed** | Delayed decision-making | Priority generation in seconds |
+| **Geospatial Awareness** | Static maps | Interactive GIS visualization |
+| **Citizen Communication** | Web forms / phone calls | Multimodal SOS portal |
+| **Language Support** | Limited | Multilingual processing |
+| **Decision Support** | Reactive | AI-assisted predictive analysis |
+| **Resource Management** | Manual tracking | Digital rescue resource tracking |
+| **Situation Reports** | Manually prepared | AI-generated tactical summaries |
+| **Real-Time Updates** | Limited | WebSocket-based updates |
+
+---
+
+# ✨ Key Features
+
+## 🖥️ 1. Tactical Command Dashboard
+
+A centralized command-center interface providing real-time visibility into:
+
+- Active incidents
+- Critical zones
+- Rescue resources
+- Unit availability
+- Incident severity
+- Active simulations
+- Emergency response status
+
+The interface uses a modern tactical **glassmorphism UI** for better information organization.
+
+---
+
+## 🗺️ 2. Interactive GIS Dashboard
+
+The platform provides geospatial visualization for:
+
+- Disaster locations
+- Incident markers
+- Risk zones
+- Threat heatmaps
+- Rescue unit locations
+- Spatial incident distribution
+
+This helps operators understand **where incidents are concentrated** and where resources may be required.
+
+---
+
+## 🚨 3. Citizen SOS Portal
+
+Citizens can submit emergency information through the SOS interface.
+
+Features include:
+
+- Emergency incident reporting
+- Browser-based speech-to-text
+- Multilingual input support
+- Structured SOS information
+- Offline/SMS fallback concept
+- Real-time incident submission
+
+---
+
+## 🤖 4. AI-Powered Incident Prioritization
+
+Incoming incidents are analyzed and assigned priority levels:
+
+- 🔴 **High**
+- 🟡 **Medium**
+- 🟢 **Low**
+
+The system considers severity, keywords, and local incident density to determine priority.
+
+---
+
+## 🌐 5. Multilingual AI Summarization
+
+The AI intelligence layer can process multilingual distress information and generate standardized tactical summaries.
+
+Example supported languages include:
+
+- Hindi
+- Tamil
+- Bengali
+- Spanish
+- French
+- Arabic
+
+The summarization engine focuses on extracting actionable information such as:
+
+- Location
+- Number of affected people
+- Injuries
+- Infrastructure damage
+- Emergency requirements
+
+---
+
+## 📈 6. Predictive Risk Analysis
+
+The predictive risk engine evaluates environmental and geographical information.
+
+Environmental factors can include:
+
+- Precipitation
+- Barometric pressure
+- Wind speed
+
+Geographical factors can include:
+
+- Coastal elevation
+- Urban density
+- Mountainous terrain
+
+The system can assign prospective risk probabilities to nearby zones.
+
+---
+
+## 🚑 7. Rescue Resource Management
+
+Emergency resources can be tracked and coordinated, including:
+
+- Rescue teams
+- Medical units
+- Emergency supplies
+- Resource availability
+- Deployment status
+
+Resources can be dispatched to specific incidents and returned to an available state.
+
+---
+
+## 📄 8. AI Situation Reports
+
+RESQ-AI can generate tactical situation reports containing:
+
+- Current incident status
+- Critical locations
+- Priority incidents
+- Resource requirements
+- AI-generated summaries
+
+Reports can be exported in:
+
+- Markdown
+- JSON
+
+---
+
+## ⚡ 9. Real-Time WebSocket Communication
+
+The backend provides a WebSocket stream:
+
+```text
+/ws
 ```
+
+This allows connected dashboards to receive real-time incident and dispatch updates without repeatedly refreshing the application.
+
+---
+
+## 🧪 10. Disaster Simulation Engine
+
+The project includes a simulation engine capable of generating multi-hazard scenarios.
+
+Example scenarios include:
+
+- 🌊 Urban flash floods
+- 🌋 Seismic events
+- 🔥 Wildfires
+- 🌀 Coastal cyclones
+
+The simulator helps demonstrate how the platform behaves during changing disaster conditions.
+
+---
+
+# 🧠 AI Intelligence
+
+RESQ-AI contains three major intelligence engines.
+
+---
+
+## 1️⃣ Rescue Priority Engine
+
+The priority engine uses deterministic scoring to classify incoming emergency incidents.
+
+### Priority Formula
+
+```text
+Priority Score =
+(Severity × 4)
++ Σ(Keyword Weights)
++ Volume Bonus
+```
+
+### 🔴 High-Impact Keywords
+
+**+25 points**
+
+- trapped
+- dying
+- critical
+- buried
+- drowning
+- gas leak
+
+### 🟠 Urgent Hazard Keywords
+
+**+10 points**
+
+- flooded
+- evacuate
+- damaged
+- fire
+- blocked road
+
+### 🟢 Low / Controlled Keywords
+
+**-5 points**
+
+- minor
+- contained
+- safe
+- monitoring
+
+### 📊 Surge Multiplier
+
+The system can add up to **+20 points** based on incident density in a local cluster.
+
+---
+
+# 2️⃣ Multilingual Summarizer
+
+The multilingual intelligence engine is designed to:
+
+- Extract important entities
+- Identify locations
+- Detect affected-person counts
+- Identify infrastructure failures
+- Translate multilingual distress reports
+- Generate standardized tactical reports
+- Produce concise dispatch summaries
+
+The engine can process inputs from multiple languages and convert them into actionable emergency information.
+
+---
+
+# 3️⃣ Predictive Risk Engine
+
+The predictive engine combines environmental and geographical factors to estimate potential disaster risk.
+
+### Environmental Inputs
+
+```text
+Precipitation Rate
+Barometric Pressure
+Wind Speed
+```
+
+### Geographical Inputs
+
+```text
+Coastal Elevation
+Urban Density
+Mountainous Slopes
+```
+
+The engine can identify potentially affected adjacent zones before an emergency escalates.
+
+---
+
+# 🏗️ System Architecture
+
+```text
+                         ┌─────────────────────────────┐
+                         │   MULTI-SOURCE INGESTION    │
+                         └──────────────┬──────────────┘
+                                        │
+          ┌─────────────────────────────┼─────────────────────────────┐
+          │                             │                             │
+          ▼                             ▼                             ▼
+ ┌─────────────────┐          ┌─────────────────┐           ┌─────────────────┐
+ │ Emergency Calls │          │ Citizen SOS     │           │ External Data   │
+ │ / Audio Streams │          │ Portal          │           │ Weather / GIS   │
+ └────────┬────────┘          └────────┬────────┘           └────────┬────────┘
+          │                            │                             │
+          └────────────────────────────┼─────────────────────────────┘
+                                       │
+                                       ▼
+                         ┌───────────────────────────┐
+                         │     FASTAPI BACKEND       │
+                         │ Real-Time API + WebSocket │
+                         └─────────────┬─────────────┘
+                                       │
+                    ┌──────────────────┴──────────────────┐
+                    │                                     │
+                    ▼                                     ▼
+          ┌──────────────────┐                 ┌──────────────────────┐
+          │   PostgreSQL     │                 │ AI Intelligence      │
+          │                  │                 │ Engine               │
+          │ Incidents        │                 │                      │
+          │ Zones            │                 │ Priority Engine      │
+          │ Resources        │                 │ Summarizer           │
+          │ Units            │                 │ Predictive Risk      │
+          └──────────────────┘                 └───────────┬──────────┘
+                                                           │
+                                                           ▼
+                                             ┌────────────────────────┐
+                                             │ WebSocket Broadcast    │
+                                             │ Layer                  │
+                                             └────────────┬───────────┘
+                                                          │
+                                                          ▼
+                                             ┌────────────────────────┐
+                                             │    NEXT.JS FRONTEND    │
+                                             └────────────┬───────────┘
+                                                          │
+                          ┌───────────────────────────────┼────────────────────────────┐
+                          │                               │                            │
+                          ▼                               ▼                            ▼
+                 ┌─────────────────┐            ┌─────────────────┐          ┌─────────────────┐
+                 │ Command Center  │            │ GIS Map View   │          │ SitRep Export   │
+                 └─────────────────┘            └─────────────────┘          └─────────────────┘
+```
+
+---
+
+# 🛠️ Technology Stack
+
+## Frontend
+
+| Technology | Purpose |
+|---|---|
+| **Next.js 14** | Frontend framework |
+| **TypeScript** | Type-safe development |
+| **Tailwind CSS** | UI styling |
+| **Web Speech API** | Browser speech-to-text |
+| **WebSocket** | Real-time communication |
+
+## Backend
+
+| Technology | Purpose |
+|---|---|
+| **Python 3.11+** | Backend language |
+| **FastAPI** | REST API and WebSocket backend |
+| **SQLAlchemy** | ORM |
+| **Alembic** | Database migrations |
+| **asyncio** | Asynchronous processing |
+| **PostgreSQL** | Database |
+
+## AI / Intelligence
+
+| Component | Purpose |
+|---|---|
+| **Priority Engine** | Incident prioritization |
+| **Multilingual Summarizer** | Emergency report summarization |
+| **Predictive Risk Engine** | Disaster risk analysis |
+| **Simulation Engine** | Disaster scenario generation |
+
+---
+
+# 📁 Project Structure
+
+```text
 RESQ-AI/
+│
 ├── Backend/
+│   │
+│   ├── alembic/
+│   │   ├── env.py
+│   │   └── versions/
+│   │
 │   ├── app/
-│   │   ├── main.py              # FastAPI app with all endpoints
-│   │   ├── models.py            # SQLAlchemy models
-│   │   ├── schemas.py           # Pydantic schemas
-│   │   ├── database.py          # Database connection
-│   │   ├── config.py            # Settings management
-│   │   ├── ai_engine.py         # AI engines (priority, summarizer, predictive)
-│   │   ├── simulation.py        # Live simulation background task
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   ├── models.py
+│   │   ├── schemas.py
+│   │   ├── ai_engine.py
+│   │   ├── simulation.py
+│   │   │
 │   │   └── routers/
-│   │       ├── incidents.py     # Incident endpoints
-│   │       ├── zones.py         # Zone & prediction endpoints
-│   │       └── resources.py     # Resource endpoints
+│   │       ├── incidents.py
+│   │       ├── zones.py
+│   │       └── resources.py
+│   │
 │   ├── requirements.txt
 │   ├── .env.example
-│   └── alembic/env.py
+│   └── README.md
+│
 ├── Frontend/
+│   │
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── layout.tsx       # Root layout with sidebar
-│   │   │   ├── page.tsx         # Main dashboard with tabs
-│   │   │   ├── globals.css      # Glassmorphism styles
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── globals.css
+│   │   │   │
 │   │   │   └── components/
 │   │   │       ├── CommandDashboard.tsx
 │   │   │       ├── GISLiveDashboard.tsx
@@ -59,208 +496,506 @@ RESQ-AI/
 │   │   │       ├── ResourceAllocation.tsx
 │   │   │       ├── ActiveZonesPanel.tsx
 │   │   │       ├── IncidentFeed.tsx
-│   │   │       └── ui/          # Reusable UI components
-│   │   ├── lib/
-│   │   │   ├── api.ts           # API client
-│   │   │   └── utils.ts         # Utility functions
-│   │   └── hooks/
-│   │       ├── useWebSocket.ts  # WebSocket hook
-│   │       └── useSpeechRecognition.ts  # Speech recognition hook
+│   │   │       └── ui/
+│   │   │
+│   │   ├── hooks/
+│   │   │   ├── useWebSocket.ts
+│   │   │   └── useSpeechRecognition.ts
+│   │   │
+│   │   └── lib/
+│   │       ├── api.ts
+│   │       └── utils.ts
+│   │
 │   ├── package.json
-│   ├── tsconfig.json
 │   ├── tailwind.config.ts
-│   ├── next.config.js
+│   ├── tsconfig.json
 │   └── .env.local.example
+│
 └── README.md
 ```
 
-## 🛠️ Getting Started
+---
 
-### Prerequisites
-- Python 3.11+
-- Node.js 18+
-- PostgreSQL 15+
+# 💻 Installation
 
-### Backend Setup
+## Prerequisites
+
+Make sure the following are installed:
+
+- Python `3.11+`
+- Node.js `18+`
+- PostgreSQL `15+`
+- Git
+- npm
+
+---
+
+# ⚙️ Backend Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/akashverma4518/RESQ-AI.git
+cd RESQ-AI
+```
+
+### 2. Navigate to Backend
 
 ```bash
 cd Backend
+```
+
+### 3. Create a Python virtual environment
+
+```bash
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+```
+
+### 4. Activate the virtual environment
+
+#### Windows
+
+```powershell
+venv\Scripts\activate
+```
+
+#### macOS / Linux
+
+```bash
+source venv/bin/activate
+```
+
+### 5. Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-# Copy and configure environment
+### 6. Configure environment variables
+
+Create your local `.env` file from the example:
+
+```bash
 cp .env.example .env
-# Edit .env with your DATABASE_URL
+```
 
-# Run migrations (if using Alembic)
+> On Windows, you can also manually copy `.env.example` and rename it to `.env`.
+
+Add the required configuration values to `.env`.
+
+### 7. Run database migrations
+
+```bash
 alembic upgrade head
+```
 
-# Start server
+### 8. Start the backend
+
+```bash
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### Frontend Setup
+The backend will be available at:
+
+```text
+http://localhost:8000
+```
+
+FastAPI interactive API documentation:
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+# 🎨 Frontend Setup
+
+Open a **new terminal**.
+
+### 1. Navigate to Frontend
+
+From the project root:
 
 ```bash
 cd Frontend
+```
+
+### 2. Install dependencies
+
+```bash
 npm install
+```
 
-# Copy environment
+### 3. Configure environment variables
+
+Create your local environment file:
+
+```bash
 cp .env.local.example .env.local
+```
 
-# Start development server
+Configure the backend API URL according to your local backend configuration.
+
+### 4. Start the development server
+
+```bash
 npm run dev
 ```
 
-### Access the Application
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000
-- **API Docs**: http://localhost:8000/docs
+The frontend will be available at:
 
-## 🎨 Design System
-
-### Colors
-- **Background**: `#0a0f1a` (Deep dark ambient)
-- **Panel**: `rgba(15, 23, 42, 0.6)` with `backdrop-blur-xl`
-- **Borders**: `rgba(30, 41, 59, 0.6)`
-- **Neon Accents**:
-  - Emerald: `#10b981` (Success, available, low priority)
-  - Amber: `#f59e0b` (Warning, medium priority, deployed)
-  - Crimson: `#ef4444` (Danger, high priority, critical)
-
-### Components
-- **Glass Panels**: Frosted glass with subtle borders and glow effects
-- **Buttons**: Primary (emerald), Secondary (slate), Danger (crimson), Ghost
-- **Badges**: Priority-based with pulse animations
-- **Progress Bars**: Color-coded with smooth animations
-- **Inputs/Selects**: Dark theme with emerald focus states
-
-## 📡 API Endpoints
-
-### Incidents
-- `GET /api/incidents` - List incidents (filterable)
-- `GET /api/incidents/{id}` - Get incident
-- `POST /api/incidents` - Create incident
-- `PATCH /api/incidents/{id}` - Update incident
-- `POST /api/incidents/{id}/summary` - Generate AI summary
-- `POST /api/sos` - Submit citizen SOS
-
-### Zones
-- `GET /api/zones` - List zones
-- `POST /api/zones` - Create zone
-- `GET /api/zones/{id}/predictions` - Get zone predictions
-- `POST /api/predictive-risk` - Analyze predictive risk
-
-### Resources
-- `GET /api/resources` - List resources
-- `POST /api/resources` - Create resource
-- `POST /api/resources/{id}/deploy/{incident_id}` - Deploy resource
-- `POST /api/resources/{id}/return` - Return resource
-
-### Real-time
-- `WS /ws` - WebSocket for live updates
-
-### Stats
-- `GET /api/stats` - Dashboard statistics
-
-## 🤖 AI Engines
-
-### Rescue Priority Engine
-Calculates priority based on:
-- Severity (1-10) weighted at 40%
-- High-priority keywords (trapped, dying, critical, etc.) +25 each
-- Medium-priority keywords (flooded, evacuate, damaged, etc.) +10 each
-- Low-priority keywords (minor, contained, monitoring, etc.) -5 each
-- Report volume bonus up to +20
-
-### Multilingual Summarizer
-Supports 20+ languages including Hindi, Tamil, Bengali, Spanish, French, Chinese, Arabic
-- Detects language from text
-- Translates regional keywords to English
-- Generates 2-sentence tactical reports with incident-specific templates
-
-### Predictive Risk Engine
-Analyzes:
-- Weather data (precipitation, wind, pressure, temperature)
-- Historical incident patterns by season
-- Zone type vulnerability (coastal, mountainous, urban, industrial)
-- Generates probability scores for each incident type
-
-## 🗺️ Mock Data Scenarios
-
-The simulation includes realistic disaster scenarios:
-- **Flood**: Manhattan flash flood, Mumbai monsoon flooding
-- **Earthquake**: LA magnitude 6.2, Chennai seismic event
-- **Fire**: SF Bay Area wildfire, Kolkata industrial fire
-- **Hurricane**: Miami Category 4 approach
-- **Landslide**: Seattle mountain highway blockage
-- **Tsunami**: Sydney Pacific coast warning
-- **Tornado**: Denver EF3 touchdown
-
-Languages: English, Hindi, Tamil, Bengali, Spanish, French, Portuguese, Chinese, Arabic, Russian, Japanese, Korean, Vietnamese
-
-## 🔧 Configuration
-
-### Backend (.env)
-```env
-DATABASE_URL=postgresql+asyncpg://user:pass@localhost:5432/resq_ai
-SECRET_KEY=your-secret-key
-DEBUG=true
-HOST=0.0.0.0
-PORT=8000
+```text
+http://localhost:3000
 ```
 
-### Frontend (.env.local)
-```env
-NEXT_PUBLIC_API_URL=http://localhost:8000
-NEXT_PUBLIC_WS_URL=ws://localhost:8000/ws
+---
+
+# 🔐 Environment Variables
+
+Environment files may contain sensitive credentials and **must not be committed to GitHub**.
+
+The repository uses example files:
+
+```text
+Backend/.env.example
+Frontend/.env.local.example
 ```
 
-## 📦 Deployment
+For local development:
 
-### Docker (Recommended)
-```dockerfile
-# Backend
-FROM python:3.11-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
-
-# Frontend
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json .
-RUN npm ci
-COPY . .
-RUN npm run build
-CMD ["npm", "start"]
+```text
+Backend/.env
+Frontend/.env.local
 ```
 
-### Environment Variables for Production
-- Set `DEBUG=false`
-- Use strong `SECRET_KEY`
-- Configure production `DATABASE_URL`
-- Set up reverse proxy (nginx) for WebSocket support
+### Important
 
-## 🤝 Contributing
+Never commit:
 
-1. Fork the repository
-2. Create feature branch
-3. Make changes
-4. Run tests/linting
-5. Submit PR
+```text
+.env
+.env.local
+```
 
-## 📄 License
+Never expose:
 
-MIT License - Built for hackathon demonstration
+- API keys
+- Database passwords
+- Secret keys
+- Authentication credentials
 
-## 🙏 Acknowledgments
+For production, configure secrets through the hosting platform's environment-variable settings.
 
-- FastAPI for the excellent async framework
-- Next.js team for the React framework
-- Tailwind CSS for the utility-first styling
-- Lucide for the beautiful icons
-- Recharts for the charting library
+---
+
+# 📡 API Reference
+
+## 🚨 Incident Management
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/incidents` | List all reported incidents |
+| `POST` | `/api/incidents` | Report a new emergency incident |
+| `GET` | `/api/incidents/{id}` | Retrieve a specific incident |
+| `POST` | `/api/incidents/{id}/summary` | Generate an AI tactical summary |
+| `POST` | `/api/sos` | Submit a structured citizen SOS |
+
+---
+
+## 🗺️ Zones & Predictive Analytics
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/zones` | Retrieve designated rescue zones |
+| `GET` | `/api/zones/{id}/predictions` | Retrieve prospective weather-impact predictions |
+| `POST` | `/api/predictive-risk` | Trigger predictive risk calculation |
+
+---
+
+## 🚑 Dispatch & Resources
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/resources` | List rescue teams, medical units, and supplies |
+| `POST` | `/api/resources/{id}/deploy/{incident_id}` | Dispatch a resource to an incident |
+| `POST` | `/api/resources/{id}/return` | Return/reassign a resource to available |
+
+---
+
+## ⚡ Real-Time Communication
+
+| Protocol | Endpoint | Description |
+|---|---|---|
+| `WebSocket` | `/ws` | Real-time incident and dispatch updates |
+
+---
+
+# 🧪 Disaster Simulation
+
+RESQ-AI includes a built-in disaster simulation system for demonstrating emergency scenarios.
+
+## 🌊 Urban Flash Flood
+
+Example characteristics:
+
+- Metropolitan valley floor
+- Severe road blockage
+- Flood-related emergency incidents
+
+## 🌋 Seismic Event
+
+Example characteristics:
+
+- Magnitude 6.4 earthquake
+- Structural collapses
+- Gas main ruptures
+
+## 🔥 Wildfire Interface
+
+Example characteristics:
+
+- Forest fringe encroachment
+- Evacuation requirements
+- Fire-related incidents
+
+## 🌀 Coastal Cyclone
+
+Example characteristics:
+
+- Category 4 storm surge
+- Power-grid failures
+- Emergency shelter routing
+
+---
+
+# 🐳 Docker Deployment
+
+The platform can optionally be run using containerized services.
+
+Build and start the containers:
+
+```bash
+docker-compose up --build
+```
+
+---
+
+# 🌐 Deployment
+
+RESQ-AI is structured as a separate frontend and backend application.
+
+A recommended production architecture is:
+
+```text
+                         RESQ-AI
+                            │
+             ┌──────────────┴──────────────┐
+             │                             │
+             ▼                             ▼
+        ┌──────────┐                 ┌──────────┐
+        │  Vercel  │                 │  Render  │
+        │ Frontend │                 │ Backend  │
+        └────┬─────┘                 └────┬─────┘
+             │                            │
+             ▼                            ▼
+         Next.js                       FastAPI
+                                          │
+                                          ▼
+                                     PostgreSQL
+```
+
+## Frontend Deployment
+
+The Next.js frontend can be deployed using **Vercel**.
+
+Set the project root directory to:
+
+```text
+Frontend
+```
+
+Build command:
+
+```bash
+npm run build
+```
+
+Start command for platforms that require one:
+
+```bash
+npm start
+```
+
+Configure the frontend environment variables in the hosting platform.
+
+---
+
+## Backend Deployment
+
+The FastAPI backend can be deployed as a Python web service.
+
+Set the root directory to:
+
+```text
+Backend
+```
+
+Build command:
+
+```bash
+pip install -r requirements.txt
+```
+
+Start command:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+After deployment, use the backend's public URL in the frontend environment configuration.
+
+For example:
+
+```text
+https://your-backend-url.example.com
+```
+
+> The exact environment-variable name for the frontend API URL should match the variable used by `Frontend/src/lib/api.ts`.
+
+---
+
+# 🔄 Production Data Flow
+
+```text
+Citizen / External Data
+          │
+          ▼
+     FastAPI Backend
+          │
+    ┌─────┴─────┐
+    ▼           ▼
+PostgreSQL     AI Engines
+    │           │
+    └─────┬─────┘
+          ▼
+     WebSocket
+          │
+          ▼
+    Next.js Dashboard
+          │
+    ┌─────┼─────┐
+    ▼     ▼     ▼
+   GIS   SOS   SitRep
+```
+
+---
+
+# 🛡️ Security
+
+RESQ-AI should be deployed with appropriate security controls.
+
+### Recommended practices
+
+- Never commit `.env` files.
+- Never expose API keys in frontend code.
+- Use environment variables for production secrets.
+- Use HTTPS in production.
+- Configure CORS correctly.
+- Protect database credentials.
+- Restrict database access where possible.
+- Validate all incoming API requests.
+- Apply authentication and authorization before production use.
+- Monitor backend logs and service health.
+
+---
+
+# 📊 Future Improvements
+
+Potential future improvements include:
+
+- Real-time satellite data integration
+- Live weather API integration
+- Government emergency-system integration
+- Advanced AI-based disaster forecasting
+- Computer vision for satellite/drone imagery
+- Automated SMS emergency alerts
+- Dedicated mobile application
+- Advanced authentication and role-based access
+- Live rescue-team GPS tracking
+- Advanced resource optimization
+- Multi-agency coordination
+- Historical disaster analytics
+
+---
+
+# 🎯 Project Vision
+
+RESQ-AI aims to transform disaster response from a **fragmented and reactive process** into an **intelligent, coordinated, and data-driven rescue ecosystem**.
+
+By combining artificial intelligence, real-time communication, geospatial intelligence, multilingual processing, predictive analytics, and resource coordination, RESQ-AI is designed to help emergency teams move from:
+
+```text
+Information Overload
+        ↓
+AI Analysis
+        ↓
+Incident Prioritization
+        ↓
+Actionable Intelligence
+        ↓
+Faster Rescue Coordination
+```
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+### Basic workflow
+
+```bash
+# Clone the repository
+git clone https://github.com/akashverma4518/RESQ-AI.git
+
+# Create a feature branch
+git checkout -b feature/your-feature-name
+
+# Make your changes
+
+# Stage changes
+git add .
+
+# Commit changes
+git commit -m "Add: your feature description"
+
+# Push your branch
+git push origin feature/your-feature-name
+```
+
+Then create a Pull Request on GitHub.
+
+---
+
+# 📄 License
+
+This project is currently intended as a project/demo platform.
+
+Add an appropriate open-source license to the repository if the project is intended for public reuse or distribution.
+
+---
+
+<div align="center">
+
+# 🚨 RESQ-AI
+
+### AI-Powered Disaster Intelligence & Autonomous Rescue Coordination
+
+**From scattered information to prioritized action.**
+
+---
+
+Built with ❤️ using **FastAPI • Next.js • TypeScript • Python • PostgreSQL • AI**
+
+</div>
